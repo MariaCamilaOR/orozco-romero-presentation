@@ -1,2 +1,9 @@
-# orozco-romero-presentation
- Estudiante de Ingeniería Informática con experiencia práctica en desarrollo web remoto para el mercado estadounidense. Poseo un interés en la ciberseguridad desde un enfoque de prevención y protección de sistemas.
+
+  # Professional Portfolio Website
+
+  ## Running the code
+
+  Run `npm i` to install the dependencies.
+
+  Run `npm run dev` to start the development server.
+  
