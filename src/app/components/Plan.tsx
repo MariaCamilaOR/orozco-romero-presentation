@@ -92,7 +92,7 @@ export function Plan() {
                   <div className="flex items-start gap-3">
                     <span className="mt-1.5 w-2 h-2 rounded-full flex-shrink-0" style={{ backgroundColor: '#386FA4' }}></span>
                     <span className="text-lg" style={{ color: '#000121' }}>
-                      Título de Ingeniería de Computación
+                      Título de Ingeniería informática 
                     </span>
                   </div>
                   <div className="flex items-start gap-3">

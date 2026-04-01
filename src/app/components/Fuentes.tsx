@@ -11,9 +11,9 @@ export function Fuentes() {
     },
     {
       icon: Search,
-      title: 'Google Search / Blogs y Artículos Especializados',
+      title: 'Google Search / suscripciones y Artículos Especializados',
       subtitle: '',
-      description: 'Investigación y documentación desde fuentes como Ciberseguridad.com, bases de datos CVE (Common Vulnerabilities and Exposures) y estándares de auditoría para mantenerse actualizada en amenazas emergentes y mejores prácticas.',
+      description: 'Investigación y documentación desde fuentes como Ciberseguridad.com, Avanzatec, bases de datos CVE (Common Vulnerabilities and Exposures) y estándares de auditoría para mantenerse actualizada en amenazas emergentes y mejores prácticas.',
       color: '#386FA4',
     },
     {
