@@ -1,15 +1,19 @@
 import { Target, Briefcase, Trophy } from 'lucide-react';
+import { useLanguage } from '../i18n/LanguageContext';
 
 export function Plan() {
+  const { t } = useLanguage();
+  const p = t.plan;
+
   return (
     <section id="plan" className="py-20 px-4 sm:px-6 lg:px-8" style={{ backgroundColor: '#C6D8FF' }}>
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-12">
           <h2 className="text-4xl mb-4" style={{ color: '#000121' }}>
-            PLAN A 5 AÑOS
+            {p.title}
           </h2>
           <p className="text-xl mb-6" style={{ color: '#386FA4' }}>
-            Proyección 2031
+            {p.projection}
           </p>
           <div className="w-24 h-1 mx-auto" style={{ backgroundColor: '#4A7C59' }}></div>
         </div>
@@ -23,10 +27,10 @@ export function Plan() {
               </div>
               <div className="flex-1">
                 <h3 className="text-2xl mb-4" style={{ color: '#000121' }}>
-                  Cargo/Rol
+                  {p.roleTitle}
                 </h3>
                 <p className="text-lg leading-relaxed" style={{ color: '#000121' }}>
-                  Certified Cybersecurity Engineer o Specialist dentro de un Blue Team multinacional, con posibilidad de trabajo remoto o posición de liderazgo técnico en Colombia.
+                  {p.roleText}
                 </p>
               </div>
             </div>
@@ -40,39 +44,20 @@ export function Plan() {
               </div>
               <div className="flex-1">
                 <h3 className="text-2xl mb-4" style={{ color: '#000121' }}>
-                  Experiencias
+                  {p.experiencesTitle}
                 </h3>
                 <div className="grid md:grid-cols-2 gap-4">
-                  <div className="flex items-start gap-3">
-                    <span className="mt-1.5 w-2 h-2 rounded-full flex-shrink-0" style={{ backgroundColor: '#4A7C59' }}></span>
-                    <span className="text-lg" style={{ color: '#000121' }}>
-                      Defensa de infraestructuras críticas
-                    </span>
-                  </div>
-                  <div className="flex items-start gap-3">
-                    <span className="mt-1.5 w-2 h-2 rounded-full flex-shrink-0" style={{ backgroundColor: '#4A7C59' }}></span>
-                    <span className="text-lg" style={{ color: '#000121' }}>
-                      Análisis forense digital
-                    </span>
-                  </div>
-                  <div className="flex items-start gap-3">
-                    <span className="mt-1.5 w-2 h-2 rounded-full flex-shrink-0" style={{ backgroundColor: '#4A7C59' }}></span>
-                    <span className="text-lg" style={{ color: '#000121' }}>
-                      Respuesta automatizada a incidentes
-                    </span>
-                  </div>
-                  <div className="flex items-start gap-3">
-                    <span className="mt-1.5 w-2 h-2 rounded-full flex-shrink-0" style={{ backgroundColor: '#4A7C59' }}></span>
-                    <span className="text-lg" style={{ color: '#000121' }}>
-                      Auditoría de sistemas de información
-                    </span>
-                  </div>
-                  <div className="flex items-start gap-3">
-                    <span className="mt-1.5 w-2 h-2 rounded-full flex-shrink-0" style={{ backgroundColor: '#4A7C59' }}></span>
-                    <span className="text-lg" style={{ color: '#000121' }}>
-                      Integración SecDevOps
-                    </span>
-                  </div>
+                  {p.experiences.map((item, idx) => (
+                    <div key={idx} className="flex items-start gap-3">
+                      <span
+                        className="mt-1.5 w-2 h-2 rounded-full flex-shrink-0"
+                        style={{ backgroundColor: '#4A7C59' }}
+                      ></span>
+                      <span className="text-lg" style={{ color: '#000121' }}>
+                        {item}
+                      </span>
+                    </div>
+                  ))}
                 </div>
               </div>
             </div>
@@ -86,33 +71,20 @@ export function Plan() {
               </div>
               <div className="flex-1">
                 <h3 className="text-2xl mb-4" style={{ color: '#000121' }}>
-                  Metas Alcanzadas
+                  {p.goalsTitle}
                 </h3>
                 <div className="grid md:grid-cols-2 gap-4">
-                  <div className="flex items-start gap-3">
-                    <span className="mt-1.5 w-2 h-2 rounded-full flex-shrink-0" style={{ backgroundColor: '#386FA4' }}></span>
-                    <span className="text-lg" style={{ color: '#000121' }}>
-                      Título de Ingeniería informática 
-                    </span>
-                  </div>
-                  <div className="flex items-start gap-3">
-                    <span className="mt-1.5 w-2 h-2 rounded-full flex-shrink-0" style={{ backgroundColor: '#386FA4' }}></span>
-                    <span className="text-lg" style={{ color: '#000121' }}>
-                      Especialización en Ciberseguridad (Universidad Autónoma de Occidente)
-                    </span>
-                  </div>
-                  <div className="flex items-start gap-3">
-                    <span className="mt-1.5 w-2 h-2 rounded-full flex-shrink-0" style={{ backgroundColor: '#386FA4' }}></span>
-                    <span className="text-lg" style={{ color: '#000121' }}>
-                      Certificaciones CISM/CISSP
-                    </span>
-                  </div>
-                  <div className="flex items-start gap-3">
-                    <span className="mt-1.5 w-2 h-2 rounded-full flex-shrink-0" style={{ backgroundColor: '#386FA4' }}></span>
-                    <span className="text-lg" style={{ color: '#000121' }}>
-                      Dominio del inglés nivel C1
-                    </span>
-                  </div>
+                  {p.goals.map((goal, idx) => (
+                    <div key={idx} className="flex items-start gap-3">
+                      <span
+                        className="mt-1.5 w-2 h-2 rounded-full flex-shrink-0"
+                        style={{ backgroundColor: '#386FA4' }}
+                      ></span>
+                      <span className="text-lg" style={{ color: '#000121' }}>
+                        {goal}
+                      </span>
+                    </div>
+                  ))}
                 </div>
               </div>
             </div>
