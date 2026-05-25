@@ -1,8 +1,10 @@
-import { Shield, Menu, X } from 'lucide-react';
+import { Code2, Menu, X, Languages } from 'lucide-react';
 import { useState } from 'react';
+import { useLanguage } from '../i18n/LanguageContext';
 
 export function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const { language, t, toggleLanguage } = useLanguage();
 
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id);
@@ -13,25 +15,49 @@ export function Header() {
   };
 
   const navItems = [
-    { id: 'quien-eres', label: '¿Quién eres?' },
-    { id: 'fuentes', label: 'Fuentes' },
-    { id: 'tendencias', label: 'Tendencias' },
-    { id: 'oportunidades', label: 'Oportunidades' },
-    { id: 'plan', label: 'Plan 5 Años' },
+    { id: 'quien-eres', label: t.header.nav.quienEres },
+    { id: 'proyectos', label: t.header.nav.proyectos },
+    { id: 'fuentes', label: t.header.nav.fuentes },
+    { id: 'tendencias', label: t.header.nav.tendencias },
+    { id: 'oportunidades', label: t.header.nav.oportunidades },
+    { id: 'plan', label: t.header.nav.plan },
   ];
 
+  const ariaToggle =
+    language === 'es' ? t.header.toggle.ariaSwitchToEn : t.header.toggle.ariaSwitchToEs;
+
+  const LanguageButton = ({ className = '' }: { className?: string }) => (
+    <button
+      onClick={toggleLanguage}
+      aria-label={ariaToggle}
+      title={ariaToggle}
+      className={`flex items-center gap-2 px-3 py-1.5 rounded-lg transition-transform hover:scale-105 shadow-sm ${className}`}
+      style={{ backgroundColor: '#4A7C59', color: '#EBEFBF' }}
+    >
+      <Languages className="w-4 h-4" />
+      <span className="text-sm font-semibold tracking-wide">{t.header.toggle.label}</span>
+    </button>
+  );
+
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-sm shadow-sm" style={{ borderBottom: '2px solid #C6D8FF' }}>
+    <header
+      className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-sm shadow-sm"
+      style={{ borderBottom: '2px solid #C6D8FF' }}
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center py-4">
           {/* Logo/Brand */}
           <div className="flex items-center gap-3">
             <div className="p-2 rounded-lg" style={{ backgroundColor: '#4A7C59' }}>
-              <Shield className="w-6 h-6" style={{ color: '#EBEFBF' }} />
+              <Code2 className="w-6 h-6" style={{ color: '#EBEFBF' }} />
             </div>
             <div>
-              <h1 className="text-lg" style={{ color: '#000121' }}>María Camila Orozco Romero</h1>
-              <p className="text-sm" style={{ color: '#386FA4' }}>Cybersecurity Specialist</p>
+              <h1 className="text-lg" style={{ color: '#000121' }}>
+                {t.header.brand}
+              </h1>
+              <p className="text-sm" style={{ color: '#386FA4' }}>
+                {t.header.role}
+              </p>
             </div>
           </div>
 
@@ -47,16 +73,21 @@ export function Header() {
                 {item.label}
               </button>
             ))}
+            <LanguageButton />
           </nav>
 
-          {/* Mobile Menu Button */}
-          <button
-            className="md:hidden p-2"
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            style={{ color: '#000121' }}
-          >
-            {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-          </button>
+          {/* Mobile actions */}
+          <div className="md:hidden flex items-center gap-2">
+            <LanguageButton />
+            <button
+              className="p-2"
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              style={{ color: '#000121' }}
+              aria-label="Toggle navigation menu"
+            >
+              {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+            </button>
+          </div>
         </div>
 
         {/* Mobile Navigation */}
